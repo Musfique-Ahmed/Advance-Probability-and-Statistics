@@ -64,13 +64,15 @@ pie_theory = pie_theory / np.sum(pie_theory) # Normalize to sum to 1
 
 # Plotting the results
 plt.figure(figsize=(10, 6))
-plt.plot(pie_sim, label='Empirical Distribution')
-plt.plot(pie_theory, label='Theoretical Distribution', linestyle='dashed')
+for i in range(n_states):
+    plt.plot(range(N_steps), pie_sim[:, i], label=f'Empirical State {i}')
+    plt.hlines(pie_theory[i], 0, N_steps-1, colors=f'C{i}', linestyles='dashed', label=f'Theoretical State {i}')
 plt.xlabel('Steps')
 plt.ylabel('Probability')
 plt.title('Markov Chain: Empirical vs Theoretical Distribution')
 plt.legend()
 plt.grid()
+plt.show()
 plt.show()
 
 # def simulate_markov_chain(transition_matrix, initial_state, num_steps):
