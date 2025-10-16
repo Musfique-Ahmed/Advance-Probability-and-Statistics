@@ -19,4 +19,9 @@ next_departure = float('inf') # No departure scheduled initially (server is idle
 waiting_queue = [] # Queue of arrival times of customers waiting for service
 waiting_times = [] # List of waiting times of all customers
 running_mean_Wq = [] # Running mean of waiting times in queue
+time_in_n = defaultdict(float) # Total time spent in each state (number of customers in system)
 
+
+def num_in_system():
+    """Return the current number of customers in the system (in service + in queue)."""
+    return len(waiting_queue) + (1 if next_departure < float('inf') else 0)
