@@ -58,6 +58,21 @@ pie_theory = np.real(eigvecs[:, i]) # Take the real part of the eigenvector (in 
 # np.real(...) takes the real part of complex numbers (in case of numerical noise)
 # np.real(:, i) takes the i-th column of eigvecs (the eigenvector corresponding to eigenvalue 1)
 
+pie_theory = pie_theory / np.sum(pie_theory) # Normalize to sum to 1
+# Normalize the stationary distribution to sum to 1
+# [3, 2, 5] -> [3/10, 2/10, 5/10] -> [0.3, 0.2, 0.5]
+
+# Plotting the results
+plt.figure(figsize=(10, 6))
+plt.plot(pie_sim, label='Empirical Distribution')
+plt.plot(pie_theory, label='Theoretical Distribution', linestyle='dashed')
+plt.xlabel('Steps')
+plt.ylabel('Probability')
+plt.title('Markov Chain: Empirical vs Theoretical Distribution')
+plt.legend()
+plt.grid()
+plt.show()
+
 # def simulate_markov_chain(transition_matrix, initial_state, num_steps):
 #     """
 #     Simulates a Markov chain given a transition matrix and an initial state.
