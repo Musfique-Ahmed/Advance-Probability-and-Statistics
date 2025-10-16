@@ -53,7 +53,10 @@ i = np.argmin(np.abs(eigvals - 1.0)) # Index of eigenvalue closest to 1 (should 
 # np.abs(eigvals - 1.0) gives array of absolute differences from 1
 # np.argmin(...) gives the index of the minimum value in that array
 # (1.001, -10, 20) - 1 = (0.001, 11, 21) -> argmin = 0 (ARGMIN gives index of minimum value in array)
-
+pie_theory = np.real(eigvecs[:, i]) # Take the real part of the eigenvector (in case of numerical noise)
+# pie_theory is the stationary distribution (not normalized yet)
+# np.real(...) takes the real part of complex numbers (in case of numerical noise)
+# np.real(:, i) takes the i-th column of eigvecs (the eigenvector corresponding to eigenvalue 1)
 
 # def simulate_markov_chain(transition_matrix, initial_state, num_steps):
 #     """
