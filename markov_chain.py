@@ -10,7 +10,9 @@ P = np.array([
 ], dtype=float)
 
 n_states = P.shape[0] # Number of states = number of rows in P
+N_steps = 20000 # Number of steps to simulate
 
+state = 0 # Initial state
 # def simulate_markov_chain(transition_matrix, initial_state, num_steps):
 #     """
 #     Simulates a Markov chain given a transition matrix and an initial state.
